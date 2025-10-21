@@ -33,13 +33,13 @@ class CatDogClassifier:
         # Имена классов
         self.labels = ["cat", "dog"]
 
-        def predict(self, image):
-            if isinstance(image, np.ndarray):
-                image = Image.fromarray(image)
-            x = self.transform(image).unsqueeze(0).to(self.device)
-            with torch.no_grad(), torch.autocast(device_type=self.device.type, enabled=self.device.type=="cuda"):
-                logits = self.model(x)
-                probs = F.softmax(logits, dim=1)[0].detach().cpu().numpy()
-            label_idx = int(np.argmax(probs))
-            return {"label": ["cat", "dog"][label_idx], "prob": round(float(probs[label_idx]), 3)}
+    def predict(self, image):
+        if isinstance(image, np.ndarray):
+            image = Image.fromarray(image)
+        x = self.transform(image).unsqueeze(0).to(self.device)
+        with torch.no_grad(), torch.autocast(device_type=self.device.type, enabled=self.device.type=="cuda"):
+            logits = self.model(x)
+            probs = F.softmax(logits, dim=1)[0].detach().cpu().numpy()
+        label_idx = int(np.argmax(probs))
+        return {"label": ["cat", "dog"][label_idx], "prob": round(float(probs[label_idx]), 3)}
 

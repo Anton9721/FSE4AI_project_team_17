@@ -1,0 +1,11 @@
+pyproject.toml
+src/api.py
+src/catsdogs.egg-info/PKG-INFO
+src/catsdogs.egg-info/SOURCES.txt
+src/catsdogs.egg-info/dependency_links.txt
+src/catsdogs.egg-info/requires.txt
+src/catsdogs.egg-info/top_level.txt
+src/model/__init__.py
+src/model/classifier.py
+tests/test_api.py
+tests/test_model.py
